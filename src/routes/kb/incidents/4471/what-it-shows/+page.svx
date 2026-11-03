@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 · what the reports show: three problems, not one'
 owner: vanessa
-status: open
+status: closed
 reviewed: 2026-11-03
 signature: v1.eyJzdWIiOiIxMjM5IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTM2ODQ2MzQsImV4cCI6MTc5Mzc3MTAzNH0.QC-BXDYI71PqA9jHFmGGDPBR54QYVWjt_yOZShCTnxE
 ---
@@ -26,9 +26,10 @@ otherwise. Read one by one, they show three different problems. Merging on the s
 ([decision 0001](/kb/decisions/0001-dedupe-by-subject)) put all of them in one ticket, and the
 queued parser fix only fixes one of them.
 
-<Callout kind="warn">
-Fixing the parser will not close #4471. The booking-v3 form and the one-day moves are separate
-bugs with their own tickets below.
+<Callout>
+Engineering closed #4471 on 5 October. The parser is fixed (). The form hint is won't fix: the booking-v3 form is retired. The one-day moves are
+counted under the parser and closed with it as a duplicate. If they come back after the fix, they
+are not the parser: reopen their ticket.
 </Callout>
 
 ## What was merged
