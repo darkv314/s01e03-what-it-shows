@@ -44,7 +44,8 @@ bugs with their own tickets below.
   It needs a form fix, not a parser fix.
 - **One-day move.** No swap: the date is one day off. *"Client in Lisbon got Tuesday. Client in
   Toronto got Monday. Same meeting."* The desk had already marked these
-  (`desk-notes.json`) but filed them under the parser by tenant.
+  (`desk-notes.json`) and, as the desk does, they stay counted under the parser where they were
+  filed. They are footnoted in the table and have their own ticket, because the fix is different.
 
 ## How the counts are made
 
