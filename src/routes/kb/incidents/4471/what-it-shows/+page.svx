@@ -1,0 +1,63 @@
+---
+layout: runbook
+title: '#4471 · what the reports show: three problems, not one'
+owner: vanessa
+status: open
+reviewed: 2026-11-03
+signature: vanessa
+---
+
+<script>
+  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+
+  const repo = 'https://github.com/darkv314/s01e03-what-it-shows/issues';
+  const tickets = { parser: `${repo}/1`, hint: `${repo}/2`, 'one-day': `${repo}/3` };
+  const labels = {
+    parser: 'Shared parser reads day-first dates month first',
+    hint: 'booking-v3 form hint says MM/DD/YYYY, form reads day first',
+    'one-day': 'Dates move by one day (time zones)',
+  };
+</script>
+
+The [#4471 page](/kb/incidents/4471) says *known, one issue, one fix queued*. The reports say
+otherwise. Read one by one, they show three different problems. Merging on the subject line
+([decision 0001](/kb/decisions/0001-dedupe-by-subject)) put all of them in one ticket, and the
+queued parser fix only fixes one of them.
+
+<Callout kind="warn">
+Fixing the parser will not close #4471. The booking-v3 form and the one-day moves are separate
+bugs with their own tickets below.
+</Callout>
+
+## What was merged
+
+<ProblemTable ticket={4471} {tickets} {labels} />
+
+## How to tell them apart
+
+- **Parser.** Day and month swap: *"Booked for 2 March. The invite says 3 February."* Any
+  channel at a day-first tenant, except the booking-v3 form.
+- **Form hint.** Also a swap, but only through the booking-v3 form (Alder Physio, Copper Studio,
+  Pale Harbour). The form tells people to type month first and then reads the date day first.
+  It needs a form fix, not a parser fix.
+- **One-day move.** No swap: the date is one day off. *"Client in Lisbon got Tuesday. Client in
+  Toronto got Monday. Same meeting."* The desk had already marked these
+  (`desk-notes.json`) but filed them under the parser by tenant.
+
+## How the counts are made
+
+- One id, one report: the export repeats some reports across pages.
+- A report's problem comes from its **tenant** (locale and booking form, `causes.ts`) and, for the
+  one-day moves, from the desk's own notes. It does not come from the intake tag: intake guesses
+  from the reporter's browser, and it disagrees with the tenant in both directions.
+- The table is computed at render time from `reports-4471.json` (`problems.ts`). No number on this
+  page is typed by hand.
+
+## Lessons
+
+- A big ticket is not always one bug. Read a sample of bodies before you mark it known.
+- Count by what the report shows, not by its subject or its intake tag.
+
+<RenderStamp {signature} />
