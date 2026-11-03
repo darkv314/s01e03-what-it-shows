@@ -4,7 +4,7 @@ title: '#4471 · what the reports show: three problems, not one'
 owner: vanessa
 status: open
 reviewed: 2026-11-03
-signature: vanessa
+signature: v1.eyJzdWIiOiIxMjM5IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTM2ODQ2MzQsImV4cCI6MTc5Mzc3MTAzNH0.QC-BXDYI71PqA9jHFmGGDPBR54QYVWjt_yOZShCTnxE
 ---
 
 <script>
