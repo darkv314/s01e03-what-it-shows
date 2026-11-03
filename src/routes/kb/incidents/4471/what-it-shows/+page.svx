@@ -27,7 +27,8 @@ otherwise. Read one by one, they show three different problems. Merging on the s
 queued parser fix only fixes one of them.
 
 <Callout>
-Engineering closed #4471 on 5 October. The parser is fixed (). The form hint is won't fix: the booking-v3 form is retired. The one-day moves are
+Engineering closed #4471 on 5 October. The parser is fixed (`fix(dates): parse dd/mm for eu
+locales`). The form hint is won't fix: the booking-v3 form is retired. The one-day moves are
 counted under the parser and closed with it as a duplicate. If they come back after the fix, they
 are not the parser: reopen their ticket.
 </Callout>
